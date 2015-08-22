@@ -24,7 +24,7 @@ require('spec_helper')
 
     describe("#save") do
       it("saves a stylist to the database") do
-        stylist = Stylist.new({:name => "Judy", :stylest_id => 1, :id => nil})
+        stylist = Stylist.new({:name => "Barbra", :stylest_id => 1, :id => nil})
         stylist.save()
         expect(Stylist.all()).to(eq([stylist]))
       end
@@ -33,11 +33,21 @@ require('spec_helper')
 
     describe('#==') do
       it('is the same client if they have the same name') do
-      stylist1 = Stylist.new({:name => "Judy", :stylest_id => 1, :id => nil})
-      stylist2 = Stylist.new({:name => "Judy", :stylest_id => 1, :id => nil})
+      stylist1 = Stylist.new({:name => "Barbra", :stylest_id => 1, :id => nil})
+      stylist2 = Stylist.new({:name => "Barbra", :stylest_id => 1, :id => nil})
       expect(stylist1).to(eq(stylist2))
       end
     end
+
+    describe('find') do
+      it('returns the id of the stylist') do
+        stylist1 = Stylist.new({:name = "Barbra", :id => nil})
+        stylist1.save()
+        stylist2 = Stylist.new({:name = "Gina", :id => nil })
+        stylist2.save()
+        expect(Stylist.fin(stylist1.id())).to(eq(stylist1))
+      end
+    end    
 
     describe('.clear') do
       it('it clears out all of the saved clients')
