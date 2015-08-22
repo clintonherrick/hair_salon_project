@@ -1,6 +1,9 @@
 require ('spec_helper')
 
 describe(Clinet) do
+  client = Client.new(:name => "Judy", :stylist_id => 1, :id => nil)
+  client2 = Client.new(:name => "Sam", :stylist_id => 1, :id => nil)
+
 
   describe(".all") do
     it("is empty at first") do
